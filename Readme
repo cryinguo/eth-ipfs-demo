@@ -1,0 +1,12 @@
+1. eth-ipfs 是 fork 的别人的项目 : https://github.com/mcchan1/eth-ipfs
+2. 在原来项目的基础上增加了自己的一些功能，配合自己的服务端 eth-ipfs-service 使用
+
+3.  使用方法：
+3.1 git clone 本项目
+3.2 分别进入 eth-ipfs-service 和 my-eth-ipfs 目录下
+3.3 分别执行 npm install 安装依赖包
+3.4 在 eth-ipfs-service 目录下 执行 npm run hot  热启动服务
+3.5 在my-eth-ipfs 目录下执行 npm run start 启动 react
+
+4. 依赖：
+服务端依赖数据库 mongodb , 需要自行下载并且启动
