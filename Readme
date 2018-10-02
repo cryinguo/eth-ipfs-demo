@@ -10,3 +10,4 @@
 
 4. 依赖：
 服务端依赖数据库 mongodb , 需要自行下载并且启动
+程序默认把文件存在了 ipfs MFS 下的 /test1/ 路径下，可以考虑新建这个路径: 命令行输入 ipfs files mkdir test1
