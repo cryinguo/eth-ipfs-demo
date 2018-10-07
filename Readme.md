@@ -19,6 +19,6 @@
 3.5 在my-eth-ipfs 目录下执行 npm run start 启动 react
 
 ### 可能遇到的问题：
-1. 添加文件没有获取到 hash ,报错说 ipfsHash[0] is not defined: 需要设置跨域访问，参考https://github.com/INFURA/tutorials/wiki/IPFS-and-CORS
+1. 添加文件没有获取到 hash ,报错说 ipfsHash[0] is not defined: 因为访问ipfs本地的5001端口被拒绝，需要设置跨域访问，参考https://github.com/INFURA/tutorials/wiki/IPFS-and-CORS
 2. service 启动后意外退出之后需要修改， my-eth-ipfs 与 eth-ipfs-service 两处项目下的config 文件的端口使其一致。
 3. ubuntu 可能会遇到启动失败的问题：Error：watch ENOSPC 报错，原因是达到了 ubuntu 默认的最大监听事件，解决方案参考：https://blog.csdn.net/qq_21460229/article/details/78290740
