@@ -78,7 +78,7 @@ class App extends Component  {
       this.setState({ethAddress});
 
       //add this hash to ipfs msf
-      await ipfs.files.cp('/test/' + this.state.fileName, '/ipfs/' + this.state.ipfsHash, (err) => {
+      await ipfs.files.cp('/ipfs/' + this.state.ipfsHash, '/test/' + this.state.fileName, (err) => {
         if (err) console.log(err);
       });
 

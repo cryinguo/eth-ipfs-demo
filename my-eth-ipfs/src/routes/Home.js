@@ -24,7 +24,7 @@ class Home extends Component {
       // get the uploaded file's name
       let fileName = document.getElementById("uploadFile").files[0]["name"];
       this.setState({fileName});
-      console.log("choose this file : ", fileName);
+      console.log("choose    file : ", fileName);
 
         event.stopPropagation()
         event.preventDefault()
