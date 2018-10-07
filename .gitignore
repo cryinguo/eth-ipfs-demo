@@ -13,6 +13,9 @@ eth-ipfs/build
 eth-ipfs-service/download
 
 # misc
+.vscode
+.gitignore
+eth-ipfs/.git*
 .DS_Store
 .env.local
 .env.development.local
