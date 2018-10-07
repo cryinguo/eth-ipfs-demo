@@ -18,4 +18,4 @@ download/
 # misc
 *.vscode
 *.git*
-
+.DS_Store
