@@ -13,7 +13,7 @@ eth-ipfs/build
 eth-ipfs-service/download
 
 # misc
-.vscode
+/.vscode
 .gitignore
 eth-ipfs/.git*
 .DS_Store
