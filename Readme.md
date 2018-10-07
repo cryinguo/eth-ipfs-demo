@@ -12,11 +12,11 @@
 5. 文件下载的默认存储位置在 eth-ipfs-service/download 路径下, 需要手动新建这个路径
 
 ### 项目运行：
-3.1 git clone 本项目
-3.2 分别进入 eth-ipfs-service 和 my-eth-ipfs 目录下
-3.3 分别执行 npm install 安装依赖包
-3.4 在 eth-ipfs-service 目录下 执行 npm run hot  热启动服务
-3.5 在my-eth-ipfs 目录下执行 npm run start 启动 react
+1. git clone 本项目
+2. 分别进入 eth-ipfs-service 和 my-eth-ipfs 目录下
+3. 分别执行 npm install 安装依赖包
+4. 在 eth-ipfs-service 目录下 执行 npm run hot  热启动服务
+5. 在my-eth-ipfs 目录下执行 npm run start 启动 react
 
 ### 可能遇到的问题：
 1. 添加文件没有获取到 hash ,报错说 ipfsHash[0] is not defined: 因为访问ipfs本地的5001端口被拒绝，需要设置跨域访问，参考https://github.com/INFURA/tutorials/wiki/IPFS-and-CORS
