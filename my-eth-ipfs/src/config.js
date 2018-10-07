@@ -1,7 +1,7 @@
 const config = {
     express: {
         url: `http://localhost:`, 
-        port: '3004',       
+        port: '3001',       
     },
 
     db: {

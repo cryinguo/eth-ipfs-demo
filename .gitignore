@@ -10,7 +10,7 @@ my-eth-ipfs/node_modules
 
 # production
 eth-ipfs/build
-eth-ipfs-service/download
+eth-ipfs-service/download/*
 
 # misc
 /.vscode
