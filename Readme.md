@@ -1,12 +1,12 @@
 ### 项目介绍
 1. 基于ipfs-api 的存储系统，通过react设计前端，eth-ipfs-service 后台使用 mongodb存储数据
-2. eth-ipfs 是 fork 的别人的项目 : https://github.com/mcchan1/eth-ipfs
+2. eth-ipfs 是 fork 的别人的项目 : https://github.com/mcchan1/eth-ipfs，此项目需要先部署存储合约，并且把合约的abi和address替换到 src/storagehash.js中。
 3. 路由系统采用单页面路由，借鉴的这个项目: https://github.com/youngwind/mini-react-router
 4. 在原来项目的基础上增加了自己的一些功能，配合自己的服务端 eth-ipfs-service 使用
 
 ### 运行前提
 1. 本地下载并启动 mongodb 数据库
-2. 本地下载并启动 ipfs daemon
+2. 本地下载并启动 ipfs daemon (设置跨域访问，参考 可能遇到的问题1)
 3. 安装 metamask 注册ropsten 测试网地址并且有余额
 4. 程序默认把文件存在了 ipfs MFS 下的 /test1/ 路径下，可以考虑新建这个路径: 命令行输入 ipfs files mkdir /test1
 5. 文件下载的默认存储位置在 eth-ipfs-service/download 路径下, 需要手动新建这个路径
