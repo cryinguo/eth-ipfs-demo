@@ -9,6 +9,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "ipfs-api": "^24.0.2",
-    "mongolass": "^4.4.0"
+    "mongolass": "^4.4.0",
+    "nodemon": "^1.18.4"
   }
 }
