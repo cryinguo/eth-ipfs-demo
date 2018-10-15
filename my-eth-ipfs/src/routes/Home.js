@@ -24,7 +24,7 @@ class Home extends Component {
       // get the uploaded file's name
       let fileName = document.getElementById("uploadFile").files[0]["name"];
       this.setState({fileName});
-      console.log("choose    file : ", fileName);
+      console.log("(react) choose file : ", fileName);
 
         event.stopPropagation()
         event.preventDefault()
@@ -71,7 +71,7 @@ class Home extends Component {
       //bring in user's metamask account address
       const accounts = await web3.eth.getAccounts();
      
-      console.log('Sending from Metamask account: ' + accounts[0]);
+      console.log('(eth) Sending from Metamask account: ' + accounts[0]);
 
       //obtain contract address from storehash.js
       const ethAddress= await storehash.options.address;
@@ -82,13 +82,13 @@ class Home extends Component {
       //we use ipfs.add just caculate the hash without upload file to IPFS
       await ipfs.add(this.state.buffer, (err, ipfsHash) => {
         if (err) console.log(err);
-        console.log("ipfs add hash: ",ipfsHash[0].hash);
+        console.log("(ipfs) ipfs add hash: ",ipfsHash[0].hash);
         //setState by setting ipfsHash to ipfsHash[0].hash 
         this.setState({ ipfsHash:ipfsHash[0].hash });
         
         ipfs.files.cp( '/ipfs/' + this.state.ipfsHash, '/test1/' + this.state.fileName, {parents:true}, (err) => {
           if (err) console.log(err);
-          console.log("cpcpcpc");
+          console.log("(ipfs) cp hash to ipfs MFS");
         });
         
       
@@ -99,14 +99,14 @@ class Home extends Component {
         storehash.methods.sendHash(this.state.ipfsHash).send({
           from: accounts[0] 
         }, (error, transactionHash) => {
-          console.log(transactionHash);
+          console.log("(eth) Txhash: ", transactionHash);
           this.setState({transactionHash});
         }); //storehash 
 
         fetch(config.express.url+config.express.port+"?cid=" + this.state.ipfsHash + "&filename=" + this.state.fileName)
           .then(res => res.text())
           .then(res => {
-            console.log("storingdb statues :", res)
+            console.log("(mongodb) storingdb statues :", res)
           })// 
 
       }) //await ipfs.add 

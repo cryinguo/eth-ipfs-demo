@@ -10,11 +10,11 @@ class Topics extends Component{
     }
 
     searchFile = () => {
-        console.log("search file : ",document.getElementById('filePara').value);
+        console.log("(react) search file: ",document.getElementById('filePara').value);
         fetch(config.express.url + config.express.port + "/search?filePara=" + document.getElementById('filePara').value)
             .then(res => res.text())
             .then(res => {
-            console.log("file :", JSON.parse(res));
+            console.log("(mongodb) search result: ", JSON.parse(res));
             let fileName = JSON.parse(res).name;
             let fileHash = JSON.parse(res).hash;
             this.setState({fileName});
@@ -27,7 +27,7 @@ class Topics extends Component{
         fetch(config.express.url + config.express.port + "/topic?cid=" + this.state.fileHash + "&filename=" + this.state.fileName)
           .then(res => res.text())
           .then(res => {
-            console.log("downloading statues :", res)
+            console.log("(mongodb) downloading statues :", res)
           })
     }
     
