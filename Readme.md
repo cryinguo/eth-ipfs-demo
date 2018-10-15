@@ -6,7 +6,12 @@
 
 ### 运行前提
 1. 本地下载并启动 mongodb 数据库
+  1.1 brew install mongodb
+  1.2 brew services start mongodb 
 2. 本地下载并启动 ipfs daemon (设置跨域访问，参考 可能遇到的问题1)
+  2.1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+  2.2 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST"]'
+  2.3 ipfs daemon
 3. 安装 metamask 注册ropsten 测试网地址并且有余额
 4. 程序默认把文件存在了 ipfs MFS 下的 /test1/ 路径下，可以考虑新建这个路径: 命令行输入 ipfs files mkdir /test1
 5. 文件下载的默认存储位置在 eth-ipfs-service/download 路径下, 需要手动新建这个路径
