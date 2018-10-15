@@ -1,12 +1,18 @@
 const Mongolass = require('mongolass')
 const fs = require("fs");
-const ipfs = require('./ipfs');
-const config = require('./config')
+const ipfs = require('../eth-ipfs/ipfs');
+const config = require('../config')
+const Rx = require('rxjs/Rx');
+
 // const mongolass = new Mongolass
 // mongolass.connect(config.mongodb)
 
+let self
 class Mongo {
     constructor() {
+        self = this
+        self.download$ = new Rx.Subject()
+        self.storeInMongo$ = new Rx.Subject()
         this.mongolass = new Mongolass(config.db.url)
         this.file = this.mongolass.model('ipfsfiles', {
             name: { type: 'string' },
@@ -18,14 +24,17 @@ class Mongo {
         this.file
             .insertOne({ name: name_, hash: hash_})
             .exec()
-            .then(console.log("data saved"))
+            .then( () => {
+                //console.log("data saved"),
+                self.storeInMongo$.next("data saved")
+            })
             .catch(function (e) {
               console.error(e)
               console.error(e.stack)
             })
     }
     searchFile (para) {
-        console.log("searching...", para);
+        console.log("(mongodb) searching... ", para);
         if (para.length === 46 && para.indexOf("Qm") === 0) {            
             return (this.file
                 .findOne({ 'hash': para })
@@ -38,16 +47,17 @@ class Mongo {
         }  
     }
 
-    async downloadFile (cid, fileName) {
-        console.log("download file ",cid,fileName)
-        await ipfs.files.get(cid, function (err, files) {
+    downloadFile (cid, fileName) {
+        //console.log("download file ",cid,fileName)
+        ipfs.get(cid, function (err, files) {
             if (err) console.log("ipfsGetErr", err);
             files.forEach((file) => {
-                console.log("downloading file0 :",file.path)
+                console.log("(mongodb) downloading file :",file.path)
                 //console.log(file.content.toString('utf8'))
-                fs.writeFile("./download/" + fileName, file.content.toString('utf8'), err => {
+                fs.writeFile("./download/" + fileName, file.content, err => {
                     if(err) console.log("fs.write Err:",err);
-                    console.log("downloading finished")
+                    //console.log("downloading finished")
+                    self.download$.next("downloading finished")
                 })
             })
         })
