@@ -1,3 +1,5 @@
+# my-eth-ipfs 移动到https://github.com/sean0523/my-eth-ipfs，目标地址对把service整合到一起，使用npm run start 同时启动两个服务，方便调试。 这里不再更新。不过需要部署的时候server还是需要分离。
+
 ### 项目介绍
 1. 基于ipfs-api 的存储系统，通过react设计前端，eth-ipfs-service 后台使用 mongodb存储数据
 2. eth-ipfs 是 fork 的别人的项目 : https://github.com/mcchan1/eth-ipfs，此项目需要先部署存储合约，并且把合约的abi和address替换到 src/storagehash.js中。
